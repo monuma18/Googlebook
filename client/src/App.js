@@ -19,8 +19,7 @@ class App extends Component {
     const { name, value } = event.target;
     this.setState({
 
-      //name="recipeSearch"
-      //"recipeSearch" : "burger"
+      
       [name]: value
     });
   };
@@ -70,17 +69,18 @@ class App extends Component {
           <Row>
             <Col size="xs-12">
               {!this.state.recipes.length ? (
-                <h1 className="text-center">No Recipes to Display</h1>
+                <h1 className="text-center">No Books to Display</h1>
               ) : (
                 <BookList>
                   {this.state.recipes.map(recipe => {
                     return (
                       <BookListItem
-                        key={recipe.volumeInfo.title}
+                        key={recipe.id}
                         title={recipe.volumeInfo.title}
                         href={recipe.volumeInfo.previewLink}
                         description={recipe.volumeInfo.description}
                         thumbnail={recipe.volumeInfo.imageLinks.thumbnail}
+                        authors={recipe.volumeInfo.authors}
                       />
                     );
                   })}
